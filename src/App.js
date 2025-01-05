@@ -9,13 +9,13 @@ const Calculator = () => {
 
     const handleButtonClick = (value) => {
         setInput(input + value);
-        setError('');  // Clear error when typing
+        setError('');
     };
 
     const handleClear = () => {
         setInput('');
         setResult(null);
-        setError('');  // Clear error on clear
+        setError(''); 
     };
 
     const handleEvaluate = () => {
