@@ -5,24 +5,33 @@ import './App.css';
 const Calculator = () => {
     const [input, setInput] = useState('');
     const [result, setResult] = useState(null);
+    const [error, setError] = useState('');
 
     const handleButtonClick = (value) => {
         setInput(input + value);
+        setError('');  // Clear error when typing
     };
 
     const handleClear = () => {
         setInput('');
         setResult(null);
+        setError('');  // Clear error on clear
     };
 
     const handleEvaluate = () => {
+        if (!input) {
+            setError('Error');
+            return;
+        }
+
         try {
-            const evalResult = evaluate(input); // Safely evaluate the expression
+            const evalResult = evaluate(input);
             setInput(evalResult.toString());
             setResult(evalResult);
         } catch (e) {
             setInput('Error');
             setResult(null);
+            setError(e.message);
         }
     };
 
@@ -31,7 +40,8 @@ const Calculator = () => {
             <h1>React Calculator</h1>
             <div className="calculator" >
                 <input type="text" value={input} readOnly />
-                { result !== null && <div className="result">{ result }</div> }
+                {error && <div className="error">{error}</div>}
+                {result !== null && <div className="result">{result}</div>}
                 <div className="buttons">
                     <button onClick={() => handleButtonClick('7')}>7</button>
                     <button onClick={() => handleButtonClick('8')}>8</button>

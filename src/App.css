@@ -30,6 +30,11 @@ input {
     font-size: 18px;
     color: gray;
 }
+.error {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: gray;
+}
 
 button {
     padding: 15px;
