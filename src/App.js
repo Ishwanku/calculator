@@ -17,7 +17,7 @@ const Calculator = () => {
 
     const handleEvaluate = () => {
         try {
-            const evalResult = evaluate(input); // Safely evaluate the expression
+            const evalResult = evaluate(input);
             setInput(evalResult.toString());
             setResult(evalResult);
         } catch (e) {
